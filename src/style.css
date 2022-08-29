@@ -141,3 +141,7 @@ a {
   padding-bottom: 50px;
   text-align: center;
 }
+
+.footer a {
+  color: #23c6b8;
+}
