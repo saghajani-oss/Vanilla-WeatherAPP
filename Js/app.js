@@ -1,5 +1,4 @@
 function CurrentWeather(response) {
-    console.log(response);
 
     let temperatureElement = document.querySelector("#currentweather");
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
