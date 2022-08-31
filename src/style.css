@@ -146,3 +146,7 @@ a {
 .footer a {
   color: #23c6b8;
 }
+
+.footer a:hover{
+  color: #ff5959;
+}

@@ -11,6 +11,7 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body class="body">
@@ -26,15 +27,15 @@
           <h3 class="city-name">New York</h3>
           <ul>
             <li class="date-Time">Friday 09:58</li>
-            <li class="weather-Condition">Broken Clouds</li>
-            <li class="humidity">Humidity: <strong>93%</strong></li>
-            <li class="wind">Wind: <strong>3:09 Km/h</strong></li>
+            <li class="weather-Condition"> </li>
+            <li class="humidity">Humidity: <strong id="humidity"> </strong>%</li>
+            <li class="wind">Wind: <strong id="wind"> </strong> km/h</li>
           </ul>
         </div>
         <div class="col-6 weather-part">
           <img class="weather-img" src="img/few clouds.png" alt="" />
           <h2 class="current-degree">
-            12<small>°C|<a href="">°F</a></small>
+            <span id="currentweather">12</span><small>°C|<a href="">°F</a></small>
           </h2>
         </div>
       </div>
@@ -66,7 +67,7 @@
         </div>
       </div>
       <p class="footer">
-        This project was coded by <a href="">Samira Aghajani</a> an is
+        This project was coded by <a href="">Samira Aghajani</a> and is
         <a href="">open-sourced on GitHub</a> and hosted by
         <a href="">Netlify</a>.
       </p>
