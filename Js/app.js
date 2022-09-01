@@ -34,7 +34,7 @@ function CurrentWeather(response) {
     windElement.innerHTML = Math.round(response.data.wind.speed);
 
     let dateTimeElement = document.querySelector("#date-Time");
-    dateTimeElement.innerHTML = showDateTime(response.data.dt);
+    dateTimeElement.innerHTML = showDateTime(response.data.dt * 1000);
     
 
 }
