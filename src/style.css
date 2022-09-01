@@ -73,6 +73,11 @@ li {
   padding: 0;
 }
 
+
+li::first-letter {
+  text-transform: capitalize;
+}
+
 .date-Time,
 .weather-Condition,
 .humidity,
