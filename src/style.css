@@ -90,6 +90,10 @@ strong {
   color: #ff5959;
 }
 
+#city-name:first-letter {
+  text-transform: capitalize;
+}
+
 .weather-part {
   margin-top: 50px !important;
 }
