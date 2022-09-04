@@ -22,8 +22,10 @@ function showDateTime(timetemp) {
 }
 
 function CurrentWeather(response) {
+  celciousTemp = response.data.main.temp;
+
   let temperatureElement = document.querySelector("#currentweather");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(celciousTemp);
 
   let descriptionElement = document.querySelector(".weather-Condition");
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -61,7 +63,32 @@ function returnCityName(event) {
   cityName.innerHTML = searchedCityNAme.value;
 }
 
+function displayFarenheitTemp(event) {
+  event.preventDefault();
+  farenheit.classList.add("active");
+  celcious.classList.remove("active");
+  farenheitTemp = celciousTemp*9/5+32;
+  showFarenheitTemp = document.querySelector("#currentweather");
+  showFarenheitTemp.innerHTML = Math.round(farenheitTemp);
+}
+
+function displayCelciousTemp(event) {
+event.preventDefault();
+farenheit.classList.remove("active");
+celcious.classList.add("active");
+showCelciousTemp = document.querySelector("#currentweather");
+showCelciousTemp.innerHTML = Math.round(celciousTemp);
+}
+
 searchEngine("New York");
+
+let celciousTemp = null;
 
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", returnCityName);
+
+let farenheit = document.querySelector("#farenheit");
+farenheit.addEventListener("click", displayFarenheitTemp);
+
+let celcious = document.querySelector("#celcious");
+celcious.addEventListener("click", displayCelciousTemp);
