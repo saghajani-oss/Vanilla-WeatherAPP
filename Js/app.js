@@ -82,11 +82,13 @@ function displayCelciousTemp(event) {
 
 function showPredictionPart() {
   let predictionElement = document.querySelector("#prediction");
-  let predictionHTML = `<div class="row">`;
+
+  let predicttionHtml = `<div class="row">`;
+
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
   days.forEach(function (day) {
-    predictionHTML =
-      predictionHTML +
+    predicttionHtml =
+      predicttionHtml +
       `<div class="col-2">
           <p class="day-prediction">${day}</p>
           <img class="weather-img-predict" src="img/few clouds.png" alt="" />
@@ -94,9 +96,8 @@ function showPredictionPart() {
         </div>`;
   });
 
-  predictionHTML = predictionHTML + ` </div>`;
-
-  predictionElement.innerHTML = predictionHTML;
+  predicttionHtml = predicttionHtml + `</div>`;
+  predictionElement.innerHTML = predicttionHtml;
 }
 
 searchEngine("New York");
