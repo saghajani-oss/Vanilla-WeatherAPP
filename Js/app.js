@@ -67,20 +67,41 @@ function displayFarenheitTemp(event) {
   event.preventDefault();
   farenheit.classList.add("active");
   celcious.classList.remove("active");
-  farenheitTemp = celciousTemp*9/5+32;
+  farenheitTemp = (celciousTemp * 9) / 5 + 32;
   showFarenheitTemp = document.querySelector("#currentweather");
   showFarenheitTemp.innerHTML = Math.round(farenheitTemp);
 }
 
 function displayCelciousTemp(event) {
-event.preventDefault();
-farenheit.classList.remove("active");
-celcious.classList.add("active");
-showCelciousTemp = document.querySelector("#currentweather");
-showCelciousTemp.innerHTML = Math.round(celciousTemp);
+  event.preventDefault();
+  farenheit.classList.remove("active");
+  celcious.classList.add("active");
+  showCelciousTemp = document.querySelector("#currentweather");
+  showCelciousTemp.innerHTML = Math.round(celciousTemp);
+}
+
+function showPredictionPart() {
+  let predictionElement = document.querySelector("#prediction");
+  let predictionHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    predictionHTML =
+      predictionHTML +
+      `<div class="col-2">
+          <p class="day-prediction">${day}</p>
+          <img class="weather-img-predict" src="img/few clouds.png" alt="" />
+          <p class="weather-predict"><strong>22°C</strong> 11°C</p>
+        </div>`;
+  });
+
+  predictionHTML = predictionHTML + ` </div>`;
+
+  predictionElement.innerHTML = predictionHTML;
 }
 
 searchEngine("New York");
+
+showPredictionPart();
 
 let celciousTemp = null;
 
