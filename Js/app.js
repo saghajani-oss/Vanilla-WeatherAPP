@@ -21,6 +21,12 @@ function showDateTime(timetemp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function getPrediction(coordinate) {
+  let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showPredictionPart);
+}
+
 function CurrentWeather(response) {
   celciousTemp = response.data.main.temp;
 
@@ -45,6 +51,8 @@ function CurrentWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getPrediction(response.data.coord);
 }
 
 function searchEngine(city) {
@@ -80,7 +88,9 @@ function displayCelciousTemp(event) {
   showCelciousTemp.innerHTML = Math.round(celciousTemp);
 }
 
-function showPredictionPart() {
+function showPredictionPart(response) {
+
+  console.log(response.data.daily);
   let predictionElement = document.querySelector("#prediction");
 
   let predicttionHtml = `<div class="row">`;
@@ -101,8 +111,6 @@ function showPredictionPart() {
 }
 
 searchEngine("New York");
-
-showPredictionPart();
 
 let celciousTemp = null;
 
