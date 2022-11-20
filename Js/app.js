@@ -23,9 +23,37 @@ function showDateTime(timetemp) {
 
 
 
+function showPredictionPart(response) {
+  let prediction = response.data.daily;
+
+  let predictionElement = document.querySelector("#prediction");
+
+  let predicttionHtml = `<div class="row">`;
+
+  prediction.forEach(function (predictionDay, index) {
+    if (index < 5) {
+      predicttionHtml =
+        predicttionHtml +
+        `<div class="col-2">
+          <p class="day-prediction">${formatDay(predictionDay.dt)}</p>
+          <img class="weather-img-predict" src="http://openweathermap.org/img/wn/${
+            predictionDay.weather[0].icon
+          }@2x.png" alt="" />
+          <p class="weather-predict"><strong>${Math.round(
+            predictionDay.temp.max
+          )}°C</strong> ${Math.round(predictionDay.temp.min)}°C</p>
+        </div>`;
+    }
+  });
+
+  predicttionHtml = predicttionHtml + `</div>`;
+  predictionElement.innerHTML = predicttionHtml;
+}
+
+
 
 function getPrediction(coordinate) {
-let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
+let apiKey = "e947cb2640f1db92e6a19005bc43b435";
 let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&exclude={part}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showPredictionPart);
 }
@@ -85,32 +113,7 @@ function formatDay(timeStamp) {
 
 
 
-function showPredictionPart(response) {
-let prediction = response.data.daily;
-  
-  let predictionElement = document.querySelector("#prediction");
 
-  let predicttionHtml = `<div class="row">`;
-
-  prediction.forEach(function (predictionDay, index) {
-    if (index < 5) {
-      predicttionHtml =
-        predicttionHtml +
-        `<div class="col-2">
-          <p class="day-prediction">${formatDay(predictionDay.dt)}</p>
-          <img class="weather-img-predict" src="http://openweathermap.org/img/wn/${
-            predictionDay.weather[0].icon
-          }@2x.png" alt="" />
-          <p class="weather-predict"><strong>${Math.round(
-            predictionDay.temp.max
-          )}°C</strong> ${Math.round(predictionDay.temp.min)}°C</p>
-        </div>`;
-    }
-  });
-
-  predicttionHtml = predicttionHtml + `</div>`;
-  predictionElement.innerHTML = predicttionHtml;
-}
 
 searchEngine("New York");
 
